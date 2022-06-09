@@ -1,9 +1,12 @@
 
-import { saludar } from './js/componentes.js';
+
+import { hamburgerMenu } from './js/menu-hambur';
 import './styles.css';
 
-const nombre = 'Fernando'
+const d = document;
 
-saludar( nombre );
+d.addEventListener("DOMContentLoaded", (e)=>{
+    hamburgerMenu(".panel-btn",".panel")
+});
 
 
