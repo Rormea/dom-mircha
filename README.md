@@ -12,6 +12,8 @@ Y para construir el build, recordar:
 ```
 npm run build
 ```
+ Y para que cargue la pagina en nuetros host local 
 
+ npm start
 
 
