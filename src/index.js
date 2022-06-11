@@ -18,7 +18,7 @@ d.addEventListener("DOMContentLoaded", (e)=>{
 
     alarm("assets/sound/ohno.mp3","#activar-alarma","#desactivar-alarma");
 
-    countdown("cuentAtras","Mar 17,2023","Feliz Cumple Ronital 💪")
+    countdown("cuentAtras","Mar 17,2023 23:01:01","Feliz Cumple Ronital 💪")
 
 
 });
