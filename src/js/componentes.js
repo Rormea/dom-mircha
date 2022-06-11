@@ -23,6 +23,6 @@ export const saludar = ( nombre ) => {
 
 } */
 
+// let a = document.querySelector("#reloj")
 
-
-
+// console.log(a)
