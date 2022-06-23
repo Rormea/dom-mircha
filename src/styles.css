@@ -8,12 +8,12 @@
     --font-size: 16px;
     --main-color: #f7df1e;
     --second-color: #222;
-    --main-modal-color: rgba(247,222,30,0.85);
-    --second-modal-color: rgba(34,34,34,0.85);
+    --main-modal-color: rgba(247, 222, 30, 0.85);
+    --second-modal-color: rgba(34, 34, 34, 0.85);
     --container-width: 1200px;
 }
 
-html{
+html {
     box-sizing: border-box;
     font-family: var(--main-font);
     font-size: var(--font-size);
@@ -21,13 +21,13 @@ html{
 
 }
 
-*,
+/* *,
 *:before,
 *:after{
     box-sizing: inherit;
-}
+} */
 
-body{
+body {
     margin: 0;
     overflow-x: hidden;
 }
@@ -41,13 +41,16 @@ img {
 
 .header {
     position: sticky;
+    z-index: 997;
     top: 0;
     padding: 1rem;
     background-color: var(--main-color);
-    color: var(--second-color)
+    color: var(--second-color);
+    border-bottom: 1px solid;
+    border-color: var(--main-color);
 }
 
-.header h1{
+.header h1 {
     margin: 0 auto;
     text-align: center;
 }
@@ -71,16 +74,17 @@ img {
     left: 0;
     right: 0;
     width: 100%;
+    overflow-y: auto;
     background-color: var(--second-modal-color);
     transition: transform .3s ease;
-    transform: translate(0,-100%);
+    transform: translate(0, -100%);
     /* Si quiero que el menu salga de arriba vamos a usar "transform: translate(0,-100%)"  con 0 en el
     eje x y -100% en el eje Y esto quiere decir que el menu va estar oculto arriba y no se va a ver*/
 
 }
 
-.panel.is-active{
-    transform: translate(0,0);
+.panel.is-active {
+    transform: translate(0, 0);
 }
 
 
@@ -93,7 +97,7 @@ img {
     height: 4rem;
     border-radius: 50%;
     padding: 0;
-    
+
     background-color: var(--main-color)
 }
 
@@ -122,11 +126,11 @@ img {
     transition: all 0.3s ease;
 }
 
-.menu a:hover{
+.menu a:hover {
     font-weight: bold;
     color: var(--second-color);
     background-color: var(--main-modal-color);
-}   
+}
 
 /* *********** Eventos del Teclado****************** */
 
@@ -134,12 +138,353 @@ img {
     display: flex;
     min-height: 40vh;
     background-color: var(--second-color);
+
 }
 
-.ball{
+.ball {
     margin: auto;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
     background-color: var(--main-color);
+}
+
+/* *********** Btn TOP****************** */
+
+.scroll-top-btn {
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    right: calc(4.25rem + 1vw);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: var(--main-color);
+    color: var(--second-color);
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    transition: all 0.8s ease-in;
+
+}
+
+.scroll-top-btn:hover {
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+
+}
+
+/* **** dark-theme-btn ***** */
+
+.dark-theme-btn {
+    position: fixed;
+    z-index: 999;
+    bottom: 1vh;
+    left: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: var(--main-color);
+    color: var(--second-color);
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    transition: all 0.8s ease-in;
+
+}
+
+.dark-theme-btn:hover {
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+
+}
+
+/* *** aplicar el thema oscuro */
+
+/* SE LE AGREGARIA EL TEMA A LA ETIQUETA HTML */
+
+.dark-mode {
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+/* *** Search Filter ***** */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    transition: all 0.3s ease-out;
+    box-sizing: revert;
+}
+
+.card.img {
+    width: 100%;
+    height: auto;
+}
+
+.card figcaption {
+    padding: 1rem;
+
+}
+
+.filter {
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    order: 1;
+}
+
+
+/* *** Responsive Slider ***** */
+
+.slider {
+    position: relative;
+    width: 80%;
+    margin: 1rem auto;
+    text-align: center;
+    border: thin solid black;
+}
+
+.slider-slides {
+    position: relative;
+    height: 400px;
+}
+
+.slider-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity;
+    transition: opacity 1s ease;
+}
+
+.slider-slide img {
+    height: inherit;
+    width: inherit;
+    object-fit: cover;
+    object-position: 50% 0%;
+}
+
+.slider-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slider a {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: thin solid #000;
+    text-decoration: none;
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.slider a:hover {
+    color: #4d4d4d;
+}
+
+.slider-btn {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 3rem;
+    font-weight: bold;
+
+}
+
+
+/*  ***********   ScrollSpy   ********* */
+
+@media screen and (min-width: 1024px) {
+
+    body {
+        display: grid;
+        grid-template-columns: 80% 20%;
+        grid-template-rows: 4rem auto;
+        grid-template-areas:
+            "header header"
+            "main panel";
+    }
+
+
+    main {
+        grid-area: main;
+    }
+
+    .header {
+        grid-area: header;
+    }
+
+    .panel {
+        grid-area: panel;
+        align-self: start;
+
+        position: sticky;
+        top: 4rem;
+        justify-content: flex-start;
+        background-color: var(--second-color);
+        transform: translate(0, 0);
+        opacity: 1;
+        visibility: visible;
+
+    }
+
+    .panel-btn {
+        display: none;
+    }
+
+    .menu {
+
+        justify-content: start;
+        text-align: right;
+
+    }
+
+    .menu a {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .menu a:hover,
+
+    .menu a.active {
+        color: var(--second-color);
+        background-color: var(--main-color);
+
+    }
+
+    .scroll-top-btn {
+        right: initial;
+        left: calc(4.25rem + 1vw);
+    }
+
+    .section {
+        border: thin solid red
+    }
+
+}
+
+
+/*  ********** ContactForm Validations *********** */
+
+.contact-form {
+    --form-ok-color: #4caf50;
+    --form-error-color: #f44336;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+
+/* a todos eso significa * a todos, los hijos de .contact-form */
+.contact-form>* {
+    padding: .5rem;
+    margin: 1rem auto;
+    display: block;
+    width: 100%;
+
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form legend,
+.contact-form-response {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+    font-size: 1rem;
+    font-family: sans-serif;
+}
+
+/* a los input de tipo submit que esten en .contact-form  */
+.contact-form input[type="submit"] {
+    width: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* a todos los placeholder de .contact-form */
+.contact-form *::placeholder {
+    color: black;
+}
+
+
+/* valida que el elemnto tenga la atributo reuqrido y que su contenido sea válido
+y esté dentro de .contact-form */
+.contact-form [required]:valid {
+    border: thin solid var(--form-ok-color);
+}
+
+.contact-form [required]:invalid {
+    border: thin solid var(--form-error-color);
+}
+
+.contact-form-error {
+    margin-top: -1rem;
+    font-size: 80%;
+    background-color: var(--form-error-color);
+    color: #fff;
+    transition: all 800ms ease;
+}
+
+.contact-form-error.is-active {
+    display: block;
+    animation: show-message 1s 1 normal 0s ease-in-out both;
+}
+
+/* cuando la clase se active lo va volver a block para que se muetren
+le va agregar una animacon que se va llamar show-message, que se va demor 1 s en aparecer
+solo una vez de manera normal , con 0 de retardo, con efecto de animación ease-in-out, y 
+both significa que va conservar los estilos con la que la animación termine */
+
+.none {
+    display: none;
+}
+
+@keyframes show-message {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+
 }
